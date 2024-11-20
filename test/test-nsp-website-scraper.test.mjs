@@ -49,3 +49,7 @@ describe('The NSP website scraper', () => {
   })
 
 })
+
+describe('The NSPVersion class', () => {
+  
+})
