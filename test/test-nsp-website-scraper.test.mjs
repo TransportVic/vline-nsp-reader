@@ -36,6 +36,16 @@ describe('The NSP website scraper', () => {
       expect(version[1].version).to.equal('FP61')
       expect(version[1].effective).to.deep.equal(new Date('2023-05-28'))
     })
+
+    it('Should return the timetables as a list of NSP files', async () => {
+      nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP63)
+      
+      let version = await getNSPVersion()
+      expect(version[0].files[0].name).to.equal('Central Freight')
+      expect(version[0].files[0].href).to.contain('/CMSPages/GetSharePointFile.ashx?connectionname=Network-Service-Plan')
+
+      expect(version[0].files[1].name).to.equal('Eastern and S-East Freight')
+    })
   })
 
 })
