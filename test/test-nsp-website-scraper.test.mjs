@@ -19,7 +19,7 @@ describe('The NSP website scraper', () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP63)
       expect(await getNSPVersion()).to.deep.equal([{
         version: 'FP63',
-        effective: new Date('2024-11-19T13:00:00.000Z')
+        effective: new Date('2024-09-15')
       }])
     })
   })
