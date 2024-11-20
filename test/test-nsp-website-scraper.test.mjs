@@ -18,21 +18,23 @@ describe('The NSP website scraper', () => {
   describe('The getNSPVersion function', () => {
     it('Should read the NSP website and determine the NSP version available', async () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP63)
-      expect(await getNSPVersion()).to.deep.equal([{
-        version: 'FP63',
-        effective: new Date('2024-09-15')
-      }])
+      
+      let version = await getNSPVersion()
+      expect(version.length).to.equal(1)
+      expect(version[0].version).to.equal('FP63')
+      expect(version[0].effective).to.deep.equal(new Date('2024-09-15'))
     })
 
     it('Should work with multiple NSP version being available', async () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP61FP62)
-      expect(await getNSPVersion()).to.deep.equal([{
-        version: 'FP62',
-        effective: new Date('2023-11-19')
-      }, {
-        version: 'FP61',
-        effective: new Date('2023-05-28')
-      }])
+
+      let version = await getNSPVersion()
+      expect(version.length).to.equal(2)
+      expect(version[0].version).to.equal('FP62')
+      expect(version[0].effective).to.deep.equal(new Date('2023-11-19'))
+
+      expect(version[1].version).to.equal('FP61')
+      expect(version[1].effective).to.deep.equal(new Date('2023-05-28'))
     })
   })
 
