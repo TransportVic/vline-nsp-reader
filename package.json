@@ -11,6 +11,10 @@
   "dependencies": {
     "cheerio": "^1.0.0",
     "node-fetch": "^3.3.2",
-"pdf2json": "github:eyeballcode/pdf2json-updated"
+    "pdf2json": "github:eyeballcode/pdf2json-updated"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2"
   }
 }
