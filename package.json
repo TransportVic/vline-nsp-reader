@@ -17,6 +17,7 @@
   "devDependencies": {
     "chai": "^5.1.2",
     "mocha": "^10.8.2",
-    "nock": "^13.5.6"
+    "nock": "^13.5.6",
+    "tmp-promise": "^3.0.3"
   }
 }
