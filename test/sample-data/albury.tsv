@@ -1,0 +1,85 @@
+Business ID		8605	2MA8	6MA8	8611	7605	ST24	8613	8615	7615	7601	8617	7603	7617	7603	8625
+Days Run		Daily	MO	FO	Daily	Sun+MF	Daily	Sat	Daily	MF+Sat	Daily	SuO	MF	SuO	Sat	Daily
+Master Vehicle Formation		3VS	OVERLAND	OVERLAND	3VS	3VS	XPT	3VS	2X 3VS	3VS	3VS	3VS	3VS	3VS	3VS	2X 3VS
+Formed By On Arrival		8604 06:30 SDL	ON	ON	8610 10:27 ABY	8605 10:43 SPE	ON	8612 11:37 ABY	AAP 8610, 8614	8615 15:40 SPE	8611 11:09 SPE Sun+MF 8613 11:56 SPE Sat	8616 14:05 SDL	7604 04:50 SDM	8617 18:16 SPE	8611 11:09 SPE	8620 16:33 ABY
+Train Movement Type		PSNG_SRV	PSNG_SRV	PSNG_SRV	EMPTY	EMPTY	PSNG_SRV	EMPTY	PSNG_SRV	EMPTY	EMPTY	PSNG_SRV	EMPTY	EMPTY	EMPTY	PSNG_SRV
+																
+SOUTHERN CROSS		07:07	08:05	08:05	11:00		08:30	11:47	12:04			14:33				18:02
+	Plat	1	2N	2N	2		1	1	2			2				2N
+No.1 Box, Southern Cross		07:08*	08:06*	08:06*	11:01*		08:31*	11:48*	12:05*			14:34*				18:03*
+		C	C	C	C		C	C	C			C				C
+Franklin St VLP		07:09*	08:07*	08:07*	11:02*		08:32*	11:49*	12:06*			14:35*				18:04*
+		F	F	F	F		F	F	F			F				F
+Flyover Junction		07:11*	08:08*	08:08*	11:04*		08:34*	11:51*	12:07*			14:37*				18:05*
+Moonee Ponds Creek Jct		07:12*/ML	08:11*/ML	08:11*/ML	11:06*/ML		08:36*/ML	11:53*/ML	12:09*/ML			14:39*/ML				18:07*/ML
+SOUTH DYNON LOCO					11:09			11:56			17:20		18:20		18:55	
+South Dynon Maintenance Centre											17:30		18:30		19:05	
+Sth Dynon Junction		07:14*	08:12*	08:12*			08:37*		12:11*			14:41*				18:09*
+Sims St. Junction		07:15*					08:38*		12:12*			14:42*				18:10*
+West Footscray Junction		07:18*					08:42*		12:15*			14:45*				18:13*
+Tottenham Junction		07:21*					08:44*		12:18*			14:48*				18:16*
+Tottenham Jct. West		07:22*					08:45*		12:19*			14:49*				18:17*
+Sunshine		07:23*					08:46*		12:20*			14:50*				18:18*
+McIntyre Grade Crossing		07:25*					08:47*		12:22*			14:52*				18:20*
+McIntyre Loop		07:26*					08:48*		12:23*			14:53*				18:21*
+	Plat	ML					ML		ML			ML				ML
+Tullamarine Sth BG Jct		07:29*					08:49*		12:26*			14:56*				18:24*
+		E					E		E			E				E
+Tullamarine Passing Lane		07:31*							12:28*			14:58*				18:26*
+Tullamarine Nth BG Jct		07:33*					08:51*		12:30*			15:00*				18:28*
+Jacana Flyover		07:34*					08:53*		12:31*			15:01*				18:29*
+BROADMEADOWS		07:35u					08:54/08:56u		12:32u			15:02u				18:30u
+Somerton Loop		07:39*					08:59*		12:36*			15:06*				18:34*
+	Plat	1					1		1			1				1
+Donnybrook Sth End		07:46*					09:05*		12:43*			15:13*				18:41*
+		W					W		W			W				W
+Donnybrook Passing Lane		07:49*							12:46*			15:16*				18:44*
+Donnybrook Nth End		07:51*					09:07*		12:48*			15:18*				18:46*
+Wallan SG Loop		07:54*					09:12*		12:51*			15:21*				18:49*
+	Plat	ML					ML		ML			ML				ML
+Kilmore Sth End		08:02*					09:19*		12:59*			15:29*				18:57*
+		W					W		W			E				W
+Kilmore Grade Crossing		08:03*					09:21*		13:00*			15:31*				18:58*
+Kilmore Nth End		08:06*					09:31*		13:03*			15:37*				19:01*
+Tallarook Sth End		08:13*					09:42*		13:10*			15:45*				19:08*
+		W					W		W			W				W
+Tallarook Loop		08:14*					09:44*		13:11*			15:46*				19:09*
+Tallarook Nth End		08:16*					09:46*		13:13*			15:48*				19:11*
+SEYMOUR SG Platform		08:24/08:26					09:48/09:50u		13:21/13:23			15:55/15:57				19:19/19:21
+Seymour Grade Crossing		08:26*					09:51*		13:23*			15:58*				19:21*
+Seymour Loop South		08:27*					09:52*		13:24*			15:59*				19:22*
+		W					W		W			W				W
+Seymour Loop North		08:28*					09:54*		13:25*			16:00*				19:23*
+Mangalore SG		08:33*					09:58*		13:30*			16:05*				19:28*
+AVENEL		08:37					10:01*		13:34			16:09				19:32
+Longwood Crossover		08:45*					10:12*		13:42*			16:17*				19:40*
+		W					W		W			W				W
+EUROA		08:56					10:20*		13:53			16:28				19:51
+Violet Town South Crossover		09:03*					10:26*		14:00*			16:35*				19:58*
+		W					W		W			W				W
+VIOLET TOWN		09:07					10:28*		14:04			16:39				20:02
+Benalla South Crossover		09:20*					10:40*		14:17*			16:52*				20:15*
+		W					W		W			W				W
+BENALLA		09:22/09:24					10:41/10:43		14:19/14:21			16:54/16:56				20:17/20:19
+	Plat	1					1		1			1				1
+Benalla North Crossover		09:25*					10:44*		14:22*			16:57*				20:20*
+		E					W		E			E				E
+Benalla Cement Sdg		09:27*					10:45*		14:24*			16:59*				20:22*
+Wangaratta South Crossover		09:45*					11:05*		14:42*			17:16*				20:40*
+		E					W		E			E				E
+WANGARATTA		09:47/09:49					11:06/11:08		14:44/14:46			17:19/17:21				20:42/20:44
+	Plat	1					W		1			1				1
+Wangaratta North Crossover		09:50*					11:09*		14:47*			17:22*				20:45*
+		E					W		E			E				E
+SPRINGHURST		10:02					11:19*		14:59			17:34				20:57
+CHILTERN		10:10					11:28*		15:07			17:42				21:05
+Chiltern North Crossover		10:14*					11:30*		15:11*			17:46*				21:09*
+		W					W		W			W				W
+Barnawartha Terminal		10:17*					11:32*		15:14*			17:49*				21:12*
+Wodonga West		10:26*					11:38*		15:23*			17:58*				21:21*
+		W					W		W			W				W
+WODONGA		10:27/10:29					11:40*		15:24/15:26			17:59/18:01				21:22/21:24
+Murray River Junction		10:31*					11:42*		15:28*			18:03*				21:26*
+ALBURY		10:43				11:00	11:49/11:55		15:40	15:55		18:16		18:28		21:38
+Albury Stabling						11:10				16:05				18:38		
+Forms		7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat	7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat
