@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename)
 const nspFP63EasternFreight = path.join(__dirname, 'sample-data', 'FP63 15-09-24 Eastern and S-East Freight NSP190824.pdf')
 const nspFP63NESG = path.join(__dirname, 'sample-data', 'FP63 15-09-24 North Eastern Standard Gauge Full Service NSP130824.pdf')
 const nspFP65Central = path.join(__dirname, 'sample-data', 'FP65 13-04-25 Central Weekday NSP040325.pdf')
+const nspFP65SW = path.join(__dirname, 'sample-data', 'FP65 13-04-25 South Western Weekday NSP040325.pdf')
 
 const nspFP63EasternFreightTSV = (await fs.readFile(path.join(__dirname, 'sample-data', 'freight.tsv'))).toString().replace(/^\uFEFF/, '').split('\n').map(line => line.split('\t'))
 const nspFP63AlburyTSV = (await fs.readFile(path.join(__dirname, 'sample-data', 'albury.tsv'))).toString().replace(/^\uFEFF/, '').split('\n').map(line => line.split('\t'))
@@ -57,7 +58,7 @@ describe('The NSP PDF Reader class', () => {
     expect(reader2Body[reader2Body.length - 1][0]).to.equal('Forms')
   })
 
-  it('Should merge pages that spill onto the next page together', async () => {
+  it('Should merge pages that spill onto the next page together (Central)', async () => {
     let reader = new NSPPDFReader(nspFP65Central)
     await reader.read()
     let body0 = reader.getBody(0)
@@ -79,6 +80,16 @@ describe('The NSP PDF Reader class', () => {
 
     expect(body1[0][6]).to.equal('08:05')
     expect(body1[body1.length - 1][6]).to.equal('')
+  })
+
+  it('Should merge pages that spill onto the next page together (South Western)', async () => {
+    let reader = new NSPPDFReader(nspFP65SW)
+    await reader.read()
+    let body = reader.getBody(0)
+    expect(body[0][0]).to.equal('SOUTHERN CROSS')
+    expect(body[2][0]).to.equal('No.1 Box, Southern Cross')
+    expect(body[body.length - 3][0]).to.equal('Warrnambool Stabling')
+    expect(body[body.length - 1][0]).to.equal('Forms')
   })
 
   it('Should return a list of stations per page', async () => {
