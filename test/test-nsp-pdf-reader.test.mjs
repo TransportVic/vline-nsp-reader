@@ -114,7 +114,7 @@ describe('The NSP PDF Reader class', () => {
     expect(reader1.getStations(0)).to.deep.equal(expectedStations)
   })
 
-  it('Should generate a list of runs on each page', async () => {
+  it('Should generate a list of runs on each page (Eastern Data)', async () => {
     let reader1 = new NSPPDFReader(nspFP63EasternFreight)
     reader1.__setPageData([nspFP63EasternFreightTSV])
     let runs = reader1.getRuns(0)
@@ -174,5 +174,29 @@ describe('The NSP PDF Reader class', () => {
       plat: null,
       track: null
     })
+  })
+
+  it('Should generate a list of runs on each page (NESG Data)', async () => {
+    let reader2 = new NSPPDFReader(nspFP63NESG)
+    reader2.__setPageData([nspFP63AlburyTSV])
+    let runs = reader2.getRuns(0)
+
+    expect(runs[0].tdn).to.equal('8605')
+    expect(runs[0].conditional).to.be.false
+    expect(runs[0].daysRun).to.equal('Daily')
+    expect(runs[0].vehicleType).to.equal('3VS')
+    expect(runs[0].operator).to.null
+    expect(runs[0].movementType).to.equal('PSNG_SRV')
+    expect(runs[0].formedBy).to.equal('8604 06:30 SDL')
+    expect(runs[0].forming).to.equal('7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat')
+
+    expect(runs[1].tdn).to.equal('2MA8')
+    expect(runs[1].conditional).to.be.false
+    expect(runs[1].daysRun).to.equal('MO')
+    expect(runs[1].vehicleType).to.equal('OVERLAND')
+    expect(runs[1].operator).to.null
+    expect(runs[1].movementType).to.equal('PSNG_SRV')
+    expect(runs[1].formedBy).to.equal('ON')
+    expect(runs[1].forming).to.be.null
   })
 })
