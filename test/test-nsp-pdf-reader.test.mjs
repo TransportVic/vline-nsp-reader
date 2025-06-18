@@ -35,4 +35,25 @@ describe('The NSP PDF Reader class', () => {
       ['Train Movement Type','','PSNG_SRV','PSNG_SRV','PSNG_SRV','EMPTY','EMPTY','PSNG_SRV','EMPTY','PSNG_SRV','EMPTY','EMPTY','PSNG_SRV','EMPTY','EMPTY','EMPTY','PSNG_SRV'],
     ])
   })
+
+  it('Should get the table body', async () => {
+    let reader1 = new NSPPDFReader(nspFP63EasternFreight)
+    reader1.__setPageData([nspFP63EasternFreightTSV])
+    let reader1Body = reader1.getBody(0)
+    expect(reader1Body[0][0]).to.equal('Maryvale Paper Mill')
+    expect(reader1Body[1][0]).to.equal('Maryvale Exch. Sdg')
+    expect(reader1Body[1][6]).to.equal('10:39/10:47')
+    expect(reader1Body[reader1Body.length - 2][0]).to.equal('WestGate Port Sdg')
+    expect(reader1Body[reader1Body.length - 2][1]).to.equal('Arr')
+
+    let reader2 = new NSPPDFReader(nspFP63NESG)
+    reader2.__setPageData([nspFP63AlburyTSV])
+    let reader2Body = reader1.getBody(0)
+    expect(reader2Body[0][0]).to.equal('Southern Cross')
+    expect(reader2Body[0][2]).to.equal('07:07')
+    expect(reader2Body[0][16]).to.equal('18:02')
+    expect(reader2Body[reader2Body.length - 2][0]).to.equal('Albury Stabling')
+    expect(reader2Body[reader2Body.length - 1][0]).to.equal('Forms')
+
+  })
 })
