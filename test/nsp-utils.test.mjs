@@ -22,9 +22,9 @@ describe('The NSP Utils module', () => {
       expect(getOperationDays('WThO')).to.deep.equal([ 'Wed', 'Thu' ])
       expect(getOperationDays('SuO')).to.deep.equal([ 'Sun' ])
     })
-    it('Should exclude days with an E', () => {
-      expect(getOperationDays('WThE')).to.deep.equal([ 'Mon', 'Tue', 'Fri', 'Sat', 'Sun' ])
-      expect(getOperationDays('FE')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu', 'Sat', 'Sun' ])
+    it('Should exclude days with an E, keeping only Weekdays', () => {
+      expect(getOperationDays('WThE')).to.deep.equal([ 'Mon', 'Tue', 'Fri' ])
+      expect(getOperationDays('FE')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu' ])
     })
     it('Should join days with a +', () => {
       expect(getOperationDays('Sun+Sat')).to.deep.equal([ 'Sat', 'Sun' ])
