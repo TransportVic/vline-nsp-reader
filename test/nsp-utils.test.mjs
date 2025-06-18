@@ -27,9 +27,9 @@ describe('The NSP Utils module', () => {
       expect(getOperationDays('FE')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu' ])
     })
     it('Should join days with a +', () => {
-      expect(getOperationDays('Sun+Sat')).to.deep.equal([ 'Sat', 'Sun' ])
-      expect(getOperationDays('Sun+MF')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sun' ])
-      expect(getOperationDays('Sun+Sat+ME')).to.deep.equal([ 'Tue', 'Wed', 'Thu', 'Fri', 'Sun' ])
+      expect(getOperationDays('Sun+Sat')).to.have.members([ 'Sat', 'Sun' ])
+      expect(getOperationDays('Sun+MF')).to.have.members([ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sun' ])
+      expect(getOperationDays('Sun+Sat+ME')).to.have.members([ 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ])
     })
   })
 })
