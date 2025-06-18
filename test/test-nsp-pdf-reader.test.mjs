@@ -188,7 +188,7 @@ describe('The NSP PDF Reader class', () => {
     expect(runs[0].operator).to.null
     expect(runs[0].movementType).to.equal('PSNG_SRV')
     expect(runs[0].formedBy).to.equal('8604 06:30 SDL')
-    expect(runs[0].forming).to.equal('7605 11:00 ABS Sun+MF 8620 12:51 SPE Sat')
+    expect(runs[0].forming).to.equal('7605 11:00 ABS SUN+MF 8620 12:51 SPE SAT')
 
     expect(runs[1].tdn).to.equal('2MA8')
     expect(runs[1].conditional).to.be.false
