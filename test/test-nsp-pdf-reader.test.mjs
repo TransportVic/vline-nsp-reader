@@ -59,8 +59,7 @@ describe('The NSP PDF Reader class', () => {
   it('Should return a list of stations per page', async () => {
     let reader1 = new NSPPDFReader(nspFP63EasternFreight)
     reader1.__setPageData([nspFP63EasternFreightTSV])
-    let stations = reader1.getStations(0)
-    expect(stations).to.deep.equal([
+    let expectedStations = [
       'Maryvale Paper Mill',
       'Maryvale Exch. Sdg',
       'MORWELL LOOP',
@@ -110,6 +109,8 @@ describe('The NSP PDF Reader class', () => {
       'Sth Dynon Junction',
       'WestGate Port Sdg',
       'Forms'
-    ])
+    ]
+    expect(reader1.getStations(0)).to.deep.equal(expectedStations)
+    expect(reader1.getStations(0)).to.deep.equal(expectedStations)
   })
 })
