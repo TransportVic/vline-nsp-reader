@@ -117,7 +117,7 @@ describe('The NSP PDF Reader class', () => {
   it('Should generate a list of runs on each page', async () => {
     let reader1 = new NSPPDFReader(nspFP63EasternFreight)
     reader1.__setPageData([nspFP63EasternFreightTSV])
-    let runs = reader1.getRuns()
+    let runs = reader1.getRuns(0)
 
     expect(runs[0].tdn).to.equal('9560')
     expect(runs[0].conditional).to.be.false
