@@ -48,8 +48,8 @@ describe('The NSP PDF Reader class', () => {
 
     let reader2 = new NSPPDFReader(nspFP63NESG)
     reader2.__setPageData([nspFP63AlburyTSV])
-    let reader2Body = reader1.getBody(0)
-    expect(reader2Body[0][0]).to.equal('Southern Cross')
+    let reader2Body = reader2.getBody(0)
+    expect(reader2Body[0][0]).to.equal('SOUTHERN CROSS')
     expect(reader2Body[0][2]).to.equal('07:07')
     expect(reader2Body[0][16]).to.equal('18:02')
     expect(reader2Body[reader2Body.length - 2][0]).to.equal('Albury Stabling')
