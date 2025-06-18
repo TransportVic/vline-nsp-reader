@@ -60,13 +60,25 @@ describe('The NSP PDF Reader class', () => {
   it('Should merge pages that spill onto the next page together', async () => {
     let reader = new NSPPDFReader(nspFP65Central)
     await reader.read()
-    let body = reader.getBody(0)
-    expect(body[0][0]).to.equal('SOUTHERN CROSS')
-    expect(body[2][0]).to.equal('Southern Cross MTM')
-    expect(body[body.length - 2][0]).to.equal('KENSINGTON')
-    expect(body[body.length - 1][0]).to.equal('Forms')
+    let body0 = reader.getBody(0)
+    expect(body0[0][0]).to.equal('SOUTHERN CROSS')
+    expect(body0[2][0]).to.equal('Southern Cross MTM')
+    expect(body0[body0.length - 2][0]).to.equal('KENSINGTON')
+    expect(body0[body0.length - 1][0]).to.equal('Forms')
 
-    expect(body[body.length - 1][2]).to.equal('19034 09:30 BKS')
+    expect(body0[body0.length - 1][2]).to.equal('19034 09:30 BKS')
+
+    let body1 = reader.getBody(1)
+    expect(body1[0][0]).to.equal('SOUTHERN CROSS')
+    expect(body1[2][0]).to.equal('Southern Cross MTM')
+    expect(body1[body1.length - 2][0]).to.equal('KENSINGTON')
+    expect(body1[body1.length - 1][0]).to.equal('Forms')
+    
+    expect(body1[0][5]).to.equal('08:01')
+    expect(body1[body1.length - 1][5]).to.equal('8224 08:42 SPE')
+
+    expect(body1[0][6]).to.equal('08:05')
+    expect(body1[body1.length - 1][6]).to.equal('')
   })
 
   it('Should return a list of stations per page', async () => {
