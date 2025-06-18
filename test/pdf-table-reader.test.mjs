@@ -4,6 +4,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import url from 'url'
 import TableReader from '../lib/table-reader.mjs'
+import { exec } from 'child_process'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -29,5 +30,13 @@ describe('The PDF Table Reader class', () => {
 
     expect(pages.length).to.equal(4)
     expect(pages[0]).to.deep.equal(nspFP63AlburyTSV)
+  })
+
+  it('Should not include the "Effective/As at/Replaces" text in the table', async () => {
+    let tableReader = new TableReader(nspFP63EasternFreightPath)
+    let pages = await tableReader.read()
+
+    let page4Text = pages[3].map(row => row.join('')).join('')
+    expect(page4Text).not.to.include('Effective')
   })
 })
