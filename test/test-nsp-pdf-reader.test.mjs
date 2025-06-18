@@ -54,6 +54,62 @@ describe('The NSP PDF Reader class', () => {
     expect(reader2Body[0][16]).to.equal('18:02')
     expect(reader2Body[reader2Body.length - 2][0]).to.equal('Albury Stabling')
     expect(reader2Body[reader2Body.length - 1][0]).to.equal('Forms')
+  })
 
+  it('Should return a list of stations per page', async () => {
+    let reader1 = new NSPPDFReader(nspFP63EasternFreight)
+    reader1.__setPageData([nspFP63EasternFreightTSV])
+    let stations = reader1.getStations(0)
+    expect(stations).to.deep.equal([
+      'Maryvale Paper Mill',
+      'Maryvale Exch. Sdg',
+      'MORWELL LOOP',
+      'Morwell Loop West',
+      'Hernes Oak',
+      'Moe West Junction',
+      'Moe West Junction',
+      'WARRAGUL',
+      'WARRAGUL',
+      'LONGWARRY',
+      'BUNYIP',
+      'BUNYIP',
+      'Pakenham MTM Boundary',
+      'Pakenham East',
+      'Pakenham',
+      'Pakenham',
+      'Berwick',
+      'Dandenong East Junction',
+      'DANDENONG',
+      'DANDENONG',
+      'Apex Westall',
+      'Westall',
+      'Oakleigh',
+      'Long Island Steel Terminal',
+      'Frankston',
+      'Caulfield',
+      'Caulfield',
+      'Caulfield',
+      'Richmond Junction',
+      'Richmond Junction',
+      'FLINDERS STREET',
+      'FLINDERS STREET',
+      'FLINDERS STREET',
+      'Viaduct Junction',
+      'SOUTHERN CROSS',
+      'Southern Cross MTM',
+      'Franklin Street Junction',
+      'Franklin Street Junction',
+      'North Melbourne',
+      'West Tower',
+      'West Tower',
+      'Spion Kop',
+      'North Dynon Yard',
+      'North Dynon Yard',
+      'Dynon Jct.',
+      'Dynon Jct.',
+      'Sth Dynon Junction',
+      'WestGate Port Sdg',
+      'Forms'
+    ])
   })
 })
