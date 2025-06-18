@@ -121,14 +121,14 @@ describe('The NSP PDF Reader class', () => {
 
     expect(runs[0].tdn).to.equal('9560')
     expect(runs[0].conditional).to.be.false
-    expect(runs[0].daysRun).to.equal('MF')
+    expect(runs[0].daysRunCode).to.equal('MF')
     expect(runs[0].operator).to.equal('QL')
     expect(runs[0].movementType).to.equal('Steel')
     expect(runs[0].forming).to.equal('OFF')
 
     expect(runs[1].tdn).to.equal('9343')
     expect(runs[1].conditional).to.be.true
-    expect(runs[1].daysRun).to.equal('MO')
+    expect(runs[1].daysRunCode).to.equal('MO')
     expect(runs[1].operator).to.equal('QL')
     expect(runs[1].movementType).to.equal('Quarry')
     expect(runs[1].forming).to.equal('TO KAX')
@@ -189,7 +189,7 @@ describe('The NSP PDF Reader class', () => {
 
     expect(runs[0].tdn).to.equal('8605')
     expect(runs[0].conditional).to.be.false
-    expect(runs[0].daysRun).to.equal('Daily')
+    expect(runs[0].daysRunCode).to.equal('Daily')
     expect(runs[0].vehicleType).to.equal('3VS')
     expect(runs[0].operator).to.null
     expect(runs[0].movementType).to.equal('PSNG_SRV')
@@ -198,7 +198,7 @@ describe('The NSP PDF Reader class', () => {
 
     expect(runs[1].tdn).to.equal('2MA8')
     expect(runs[1].conditional).to.be.false
-    expect(runs[1].daysRun).to.equal('MO')
+    expect(runs[1].daysRunCode).to.equal('MO')
     expect(runs[1].vehicleType).to.equal('OVERLAND')
     expect(runs[1].operator).to.null
     expect(runs[1].movementType).to.equal('PSNG_SRV')
