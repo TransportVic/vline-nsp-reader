@@ -45,6 +45,6 @@ describe('The PDF Table Reader class', () => {
     let tableReader = new TableReader(nspFP65SW)
     let pages = await tableReader.read()
 
-    expect(pages[1][0]).to.equal('Forms')
+    expect(pages[1][0][0]).to.equal('Forms')
   })
 })
