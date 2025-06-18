@@ -134,43 +134,49 @@ describe('The NSP PDF Reader class', () => {
     expect(runs[1].forming).to.equal('TO KAX')
     expect(runs[1].stations[0]).to.deep.equal({
       name: 'Apex Westall',
-      arrTime: null,
+      arrTime: '09:40',
       depTime: '09:40',
+      express: false,
       plat: null,
       track: null
     })
     expect(runs[1].stations[1]).to.deep.equal({
       name: 'Westall',
-      arrTime: null,
-      depTime: '09:45/09:50',
+      arrTime: '09:45',
+      depTime: '09:50',
+      express: false,
       plat: null,
       track: null
     })
     expect(runs[1].stations[2]).to.deep.equal({
       name: 'Oakleigh',
-      arrTime: null,
-      depTime: '09:58*',
+      arrTime: '09:58',
+      depTime: '09:58',
+      express: true,
       plat: null,
       track: null
     })
     expect(runs[1].stations[3]).to.deep.equal({
       name: 'Caulfield',
-      arrTime: null,
-      depTime: '10:05*',
+      arrTime: '10:05',
+      depTime: '10:05',
+      express: true,
       plat: '3',
       track: 'CL'
     })
     expect(runs[1].stations[8]).to.deep.equal({
       name: 'Franklin Street Junction',
-      arrTime: null,
-      depTime: '10:54*',
+      arrTime: '10:54',
+      depTime: '10:54',
+      express: true,
       plat: null,
       track: 'TS'
     })
     expect(runs[1].stations[10]).to.deep.equal({
       name: 'Spion Kop',
-      arrTime: null,
-      depTime: '10:56*',
+      arrTime: '10:56',
+      depTime: '10:56',
+      express: true,
       plat: null,
       track: null
     })
