@@ -33,15 +33,23 @@ if (latestVersion.effective > currentVersion.effective) {
   
   nspFiles = []
   for (let file of nspFileNames) {
-    if (!(file.endsWith('.pdf') && file.startsWith(latestVersion.version))) continue
+    if (!(file.endsWith('.pdf') && file.startsWith(latestVersion.version)) || file.includes('Central')) continue
     let nspFile = new NSPFile(file.slice(0, -4), null, latestVersion.version)
     nspFile.setFilePath(path.join(nspFolder, file))
     nspFiles.push(nspFile)
   }
 }
 
+let allRuns = {}
+
 for (let file of nspFiles) {
   console.log('Reading', file)
-  console.log(await file.extractRuns())
+  let runs = await file.extractRuns()
+  for (let run of runs) {
+    if (run.movementType !== 'PSNG_SRV') continue
+    let runID = `${run.tdn}-${run.daysRunCode}`
+    if (!allRuns[runID]) allRuns[runID] = run
+  }
 }
 
+console.log(allRuns)
