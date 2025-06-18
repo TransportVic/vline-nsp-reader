@@ -11,10 +11,13 @@ const __dirname = path.dirname(__filename)
 const nspFP63EasternFreight = path.join(__dirname, 'sample-data', 'FP63 15-09-24 Eastern and S-East Freight NSP190824.pdf')
 const nspFP63NESG = path.join(__dirname, 'sample-data', 'FP63 15-09-24 North Eastern Standard Gauge Full Service NSP130824.pdf')
 
+const nspFP63EasternFreightTSV = (await fs.readFile(path.join(__dirname, 'sample-data', 'freight.tsv'))).toString().replace(/^\uFEFF/, '').split('\n').map(line => line.split('\t'))
+const nspFP63AlburyTSV = (await fs.readFile(path.join(__dirname, 'sample-data', 'albury.tsv'))).toString().replace(/^\uFEFF/, '').split('\n').map(line => line.split('\t'))
+
 describe('The NSP PDF Reader class', () => {
   it('Should get the table header', async () => {
     let reader1 = new NSPPDFReader(nspFP63EasternFreight)
-    await reader1.read()
+    reader1.__setPageData([nspFP63EasternFreightTSV])
     expect(reader1.getHeader(0)).to.deep.equal([
       ['Business ID', '', '9560', '9343 ††', '9343', '9562 ††', '9476', '9564', '9564 ††'],
       ['Days Run', '', 'MF', 'MO', 'ME', 'MF', 'MF', 'FE', 'FO'],
@@ -23,7 +26,7 @@ describe('The NSP PDF Reader class', () => {
     ])
 
     let reader2 = new NSPPDFReader(nspFP63NESG)
-    await reader2.read()
+    reader2.__setPageData([nspFP63AlburyTSV])
     expect(reader2.getHeader(0)).to.deep.equal([
       ['Business ID','','8605','2MA8','6MA8','8611','7605','ST24','8613','8615','7615','7601','8617','7603','7617','7603','8625'],
       ['Days Run','','Daily','MO','FO','Daily','Sun+MF','Daily','Sat','Daily','MF+Sat','Daily','SuO','MF','SuO','Sat','Daily'],
