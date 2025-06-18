@@ -113,4 +113,46 @@ describe('The NSP PDF Reader class', () => {
     expect(reader1.getStations(0)).to.deep.equal(expectedStations)
     expect(reader1.getStations(0)).to.deep.equal(expectedStations)
   })
+
+  it('Should generate a list of runs on each page', async () => {
+    let reader1 = new NSPPDFReader(nspFP63EasternFreight)
+    reader1.__setPageData([nspFP63EasternFreightTSV])
+    let runs = reader1.getRuns()
+
+    expect(runs[0].tdn).to.equal('9560')
+    expect(runs[0].conditional).to.be.false
+    expect(runs[0].daysRun).to.equal('MF')
+    expect(runs[0].operator).to.equal('QL')
+    expect(runs[0].movementType).to.equal('Steel')
+
+    expect(runs[1].tdn).to.equal('9343')
+    expect(runs[1].conditional).to.be.true
+    expect(runs[1].daysRun).to.equal('MO')
+    expect(runs[1].operator).to.equal('QL')
+    expect(runs[1].movementType).to.equal('Quarry')
+    expect(runs[1].stations[0]).to.deep.equal({
+      name: 'Apex Westall',
+      time: '09:40',
+      plat: null,
+      track: null
+    })
+    expect(runs[1].stations[1]).to.deep.equal({
+      name: 'Westall',
+      time: '09:45/09:50',
+      plat: null,
+      track: null
+    })
+    expect(runs[1].stations[2]).to.deep.equal({
+      name: 'Oakleigh',
+      time: '09:58*',
+      plat: null,
+      track: null
+    })
+    expect(runs[1].stations[3]).to.deep.equal({
+      name: 'Caulfield',
+      time: '10:05*',
+      plat: '3',
+      track: 'CL'
+    })
+  })
 })
