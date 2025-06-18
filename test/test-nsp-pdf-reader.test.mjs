@@ -132,27 +132,45 @@ describe('The NSP PDF Reader class', () => {
     expect(runs[1].movementType).to.equal('Quarry')
     expect(runs[1].stations[0]).to.deep.equal({
       name: 'Apex Westall',
-      time: '09:40',
+      arrTime: null,
+      depTime: '09:40',
       plat: null,
       track: null
     })
     expect(runs[1].stations[1]).to.deep.equal({
       name: 'Westall',
-      time: '09:45/09:50',
+      arrTime: null,
+      depTime: '09:45/09:50',
       plat: null,
       track: null
     })
     expect(runs[1].stations[2]).to.deep.equal({
       name: 'Oakleigh',
-      time: '09:58*',
+      arrTime: null,
+      depTime: '09:58*',
       plat: null,
       track: null
     })
     expect(runs[1].stations[3]).to.deep.equal({
       name: 'Caulfield',
-      time: '10:05*',
+      arrTime: null,
+      depTime: '10:05*',
       plat: '3',
       track: 'CL'
+    })
+    expect(runs[1].stations[8]).to.deep.equal({
+      name: 'Franklin Street Junction',
+      arrTime: null,
+      depTime: '10:54*',
+      plat: null,
+      track: 'TS'
+    })
+    expect(runs[1].stations[10]).to.deep.equal({
+      name: 'Spion Kop',
+      arrTime: null,
+      depTime: '10:56*',
+      plat: null,
+      track: null
     })
   })
 })
