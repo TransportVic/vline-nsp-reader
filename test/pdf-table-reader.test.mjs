@@ -4,7 +4,6 @@ import fs from 'fs/promises'
 import path from 'path'
 import url from 'url'
 import TableReader from '../lib/table-reader.mjs'
-import { exec } from 'child_process'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -14,6 +13,8 @@ const nspFP63EasternFreightTSV = (await fs.readFile(path.join(__dirname, 'sample
 
 const nspFP63AlburyPath = path.join(__dirname, 'sample-data', 'FP63 15-09-24 North Eastern Standard Gauge Full Service NSP130824.pdf')
 const nspFP63AlburyTSV = (await fs.readFile(path.join(__dirname, 'sample-data', 'albury.tsv'))).toString().replace(/^\uFEFF/, '').split('\n').map(line => line.split('\t'))
+
+const nspFP65SW = path.join(__dirname, 'sample-data', 'FP65 13-04-25 South Western Weekday NSP040325.pdf')
 
 describe('The PDF Table Reader class', () => {
   it('Should convert a PDF buffer into an array of pages, each containing the table data (freight data)', async () => {
@@ -38,5 +39,12 @@ describe('The PDF Table Reader class', () => {
 
     let page4Text = pages[3].map(row => row.join('')).join('')
     expect(page4Text).not.to.include('Effective')
+  })
+
+  it('Should handle a table with a single row', async () => {
+    let tableReader = new TableReader(nspFP65SW)
+    let pages = await tableReader.read()
+
+    expect(pages[1][0]).to.equal('Forms')
   })
 })
