@@ -124,12 +124,14 @@ describe('The NSP PDF Reader class', () => {
     expect(runs[0].daysRun).to.equal('MF')
     expect(runs[0].operator).to.equal('QL')
     expect(runs[0].movementType).to.equal('Steel')
+    expect(runs[0].forming).to.equal('OFF')
 
     expect(runs[1].tdn).to.equal('9343')
     expect(runs[1].conditional).to.be.true
     expect(runs[1].daysRun).to.equal('MO')
     expect(runs[1].operator).to.equal('QL')
     expect(runs[1].movementType).to.equal('Quarry')
+    expect(runs[1].forming).to.equal('TO KAX')
     expect(runs[1].stations[0]).to.deep.equal({
       name: 'Apex Westall',
       arrTime: null,
