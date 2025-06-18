@@ -2,6 +2,14 @@ import { expect } from 'chai'
 import { getOperationDays } from '../lib/nsp-utils.mjs'
 
 describe('The NSP Utils module', () => {
+  describe('The getOperationDayLetter method', () => {
+    it('Should split a list of abbreviated days apart', () => {
+      expect(getOperationDays('M')).to.deep.equal([ 'M' ])
+      expect(getOperationDays('WTh')).to.deep.equal([ 'W', 'Tu' ])
+      expect(getOperationDays('Su')).to.deep.equal([ 'Su' ])
+      expect(getOperationDays('WTh')).to.deep.equal([ 'W', 'Th' ])
+    })
+  })
   describe('The getOperationDays method', () => {
     it('Should return all days for Daily', () => {
       expect(getOperationDays('Daily')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ])
@@ -10,7 +18,7 @@ describe('The NSP Utils module', () => {
       expect(getOperationDays('MF')).to.deep.equal([ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri' ])
     })
     it('Should only the specified day if it ends with O', () => {
-      expect(getOperationDays('Mo')).to.deep.equal([ 'Mon' ])
+      expect(getOperationDays('MO')).to.deep.equal([ 'Mon' ])
       expect(getOperationDays('WThO')).to.deep.equal([ 'Wed', 'Thu' ])
       expect(getOperationDays('SuO')).to.deep.equal([ 'Sun' ])
     })
