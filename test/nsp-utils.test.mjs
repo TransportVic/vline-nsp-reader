@@ -1,13 +1,13 @@
 import { expect } from 'chai'
-import { getOperationDays } from '../lib/nsp-utils.mjs'
+import { getOperationDayLetter, getOperationDays } from '../lib/nsp-utils.mjs'
 
 describe('The NSP Utils module', () => {
   describe('The getOperationDayLetter method', () => {
     it('Should split a list of abbreviated days apart', () => {
-      expect(getOperationDays('M')).to.deep.equal([ 'M' ])
-      expect(getOperationDays('WTh')).to.deep.equal([ 'W', 'Tu' ])
-      expect(getOperationDays('Su')).to.deep.equal([ 'Su' ])
-      expect(getOperationDays('WTh')).to.deep.equal([ 'W', 'Th' ])
+      expect(getOperationDayLetter('M')).to.deep.equal([ 'M' ])
+      expect(getOperationDayLetter('WTu')).to.deep.equal([ 'W', 'Tu' ])
+      expect(getOperationDayLetter('Su')).to.deep.equal([ 'Su' ])
+      expect(getOperationDayLetter('WTh')).to.deep.equal([ 'W', 'Th' ])
     })
   })
   describe('The getOperationDays method', () => {
