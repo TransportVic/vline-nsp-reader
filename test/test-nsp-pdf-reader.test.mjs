@@ -241,4 +241,13 @@ describe('The NSP PDF Reader class', () => {
     expect(runs[1].formedBy).to.equal('ON')
     expect(runs[1].forming).to.be.null
   })
+
+  it('Should return the trip\'s route name', async () => {
+    let reader2 = new NSPPDFReader(nspFP63NESG)
+    reader2.__setPageData([nspFP63AlburyTSV])
+    let runs = reader2.getRuns(0)
+
+    expect(runs[0].tdn).to.equal('8605')
+    expect(runs[0].routeName).to.equal('Albury')
+  })
 })
