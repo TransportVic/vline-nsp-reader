@@ -1,7 +1,7 @@
 {
-  "name": "vline-nsp-reader",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@transportme/vline-nsp-reader",
+  "version": "1.0.1",
+  "main": "lib.mjs",
   "scripts": {
     "test": "mocha"
   },

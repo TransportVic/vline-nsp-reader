@@ -15,8 +15,7 @@ try {
 
 let nspFiles
 
-let latestVersion = { effective: 0, version: 'FP65' }
-// let latestVersion = (await getNSPVersion())[0]
+let latestVersion = (await getNSPVersion())[0]
 if (latestVersion.effective > currentVersion.effective) {
   console.log(`Updating NSP to ${latestVersion.version}`)
   if (await fs.stat(nspFolder)) await fs.rm(nspFolder, { recursive: true })
@@ -28,7 +27,7 @@ if (latestVersion.effective > currentVersion.effective) {
 
   nspFiles = latestVersion.files
 } else {
-  console.log('NSP up to date')
+ console.log('NSP up to date')
   let nspFileNames = await fs.readdir(nspFolder)
   
   nspFiles = []
@@ -43,7 +42,7 @@ if (latestVersion.effective > currentVersion.effective) {
 let allRuns = {}
 
 for (let file of nspFiles) {
-  console.log('Reading', file)
+ console.log('Reading', file)
   let runs = await file.extractRuns()
   for (let run of runs) {
     if (run.movementType !== 'PSNG_SRV') continue
@@ -52,4 +51,4 @@ for (let file of nspFiles) {
   }
 }
 
-console.log(allRuns)
+console.log(JSON.stringify(Object.values(allRuns), null, 2))
