@@ -1,6 +1,6 @@
 {
   "name": "@transportme/vline-nsp-reader",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "lib.mjs",
   "scripts": {
     "test": "mocha"
@@ -9,10 +9,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@transportme/pdf2json": "^4.0.10000002",
     "async": "^3.2.6",
     "cheerio": "^1.0.0",
-    "node-fetch": "^3.3.2",
-    "pdf2json": "github:eyeballcode/pdf2json"
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^5.1.2",
