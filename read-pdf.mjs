@@ -1,6 +1,6 @@
 import util from 'util'
-import NSPPDFReader from './lib/nsp-pdf-reader.mjs'
-import TableReader from './lib/table-reader.mjs'
+import NSPPDFReader from './lib/nsp/nsp-pdf-reader.mjs'
+import TableReader from './lib/nsp/table-reader.mjs'
 
 // let nspReader = new NSPPDFReader(process.argv[2])
 // await nspReader.read()

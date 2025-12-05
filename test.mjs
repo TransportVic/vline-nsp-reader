@@ -1,4 +1,4 @@
-import { getNSPVersion, NSPFile } from './lib/vline-nsp.mjs'
+import { getNSPVersion, NSPFile } from './lib/nsp/vline-nsp.mjs'
 import fs from 'fs/promises'
 import path from 'path'
 import url from 'url'

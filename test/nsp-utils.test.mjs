@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { getOperationDayLetter, getOperationDays } from '../lib/nsp-utils.mjs'
+import { getOperationDayLetter, getOperationDays } from '../lib/nsp/nsp-utils.mjs'
 
 describe('The NSP Utils module', () => {
   describe('The getOperationDayLetter method', () => {
