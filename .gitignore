@@ -1,3 +1,4 @@
+.DS_Store
 /node_modules
 /nsp-pdfs
-.DS_Store
+/heat-pdfs

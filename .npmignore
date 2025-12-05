@@ -1,4 +1,7 @@
 /test
 /node_modules
 /nsp-pdfs
+/heat-pdfs
+/test-heat.mjs
 test.mjs
+.DS_Store
