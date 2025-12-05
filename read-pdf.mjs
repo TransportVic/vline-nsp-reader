@@ -1,12 +1,10 @@
-import util from 'util'
-import NSPPDFReader from './lib/nsp/nsp-pdf-reader.mjs'
-import TableReader from './lib/nsp/table-reader.mjs'
+import PassTableReader from './lib/pass/pass-table-reader.mjs'
 
 // let nspReader = new NSPPDFReader(process.argv[2])
 // await nspReader.read()
 // console.log(util.inspect(nspReader.getAllRuns(), { depth: null, colors: true, maxArrayLength: null }))
 
-let tableReader = new TableReader(process.argv[2])
-let pages = await tableReader.read()
+let tableReader = new PassTableReader(process.argv[2])
+let tables = await tableReader.read()
 
-for (let page of pages) console.table(page)
+for (let table of tables) console.table(table)
