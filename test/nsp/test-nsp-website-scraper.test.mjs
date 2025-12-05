@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import nock from 'nock'
-import constants from '../lib/nsp/constants.mjs'
-import { getNSPVersion, NSPFile, NSPVersion } from '../lib/nsp/vline-nsp.mjs'
+import constants from '../../lib/nsp/constants.mjs'
+import { getNSPVersion, NSPFile, NSPVersion } from '../../lib/nsp/vline-nsp.mjs'
 
 import { dir as tmpdir } from 'tmp-promise'
 

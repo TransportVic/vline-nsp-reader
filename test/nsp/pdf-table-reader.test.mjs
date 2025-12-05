@@ -3,7 +3,7 @@ import { expect } from 'chai'
 import fs from 'fs/promises'
 import path from 'path'
 import url from 'url'
-import TableReader from '../lib/nsp/table-reader.mjs'
+import TableReader from '../../lib/nsp/table-reader.mjs'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
