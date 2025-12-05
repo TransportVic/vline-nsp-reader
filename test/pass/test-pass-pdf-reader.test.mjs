@@ -7,6 +7,7 @@ const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const traralgonWOLO = path.join(__dirname, 'sample-data', '500-Traralgon-36-wolo-timetable-011225-web-v1.pdf')
+const lakesEntranceWOLO = path.join(__dirname, 'sample-data', '501-Lakes-Entrance-36-wolo-timetable-011225-web-v1.pdf')
 
 describe('The Pass PDF Reader class', () => {
   it('Extracts coach runs', async () => {
@@ -54,6 +55,43 @@ describe('The Pass PDF Reader class', () => {
       name: 'Traralgon',
       arr: '12:04',
       dep: '12:04'
+    })
+  })
+
+  it('Splits runs where a change is required', async () => {
+    const reader = new PassPDFReader(lakesEntranceWOLO)
+    const runs = await reader.readRuns()
+    const train0826 = runs.find(train => train.origin === 'SOUTHERN CROSS' && train.departureTime === '08:26')
+    expect(train0826).to.exist
+    expect(train0826.type).to.equal('Train')
+
+    const stops = train0826.stops
+    expect(stops[stops.length - 1]).to.deep.equal({
+      name: 'TRARALGON',
+      arr: '10:56',
+      dep: '10:56'
+    })
+
+    const coach1106 = runs.find(coach => coach.origin === 'TRARALGON' && coach.departureTime === '11:06')
+    expect(coach1106).to.exist
+    expect(coach1106.type).to.equal('Coach')
+
+    const coach1106Stops = coach1106.stops
+    expect(coach1106Stops[coach1106Stops.length - 1]).to.deep.equal({
+      name: 'BAIRNSDALE',
+      arr: '12:51',
+      dep: '12:51'
+    })
+
+    const coach1301 = runs.find(coach => coach.origin === 'BAIRNSDALE' && coach.departureTime === '13:01')
+    expect(coach1301).to.exist
+    expect(coach1301.type).to.equal('Coach')
+
+    const coach1301Stops = coach1301.stops
+    expect(coach1301Stops[coach1301Stops.length - 1]).to.deep.equal({
+      name: 'Lake Tyers Beach',
+      arr: '13:51',
+      dep: '13:51'
     })
   })
 })
