@@ -2,6 +2,7 @@ import fs from 'fs/promises'
 import path from 'path'
 import url from 'url'
 import { getHeatTimetables, HeatTimetableFile } from './lib/heat/vline-heat.mjs'
+import util from 'node:util'
 
 const __filename = url.fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -24,10 +25,11 @@ if (await fs.stat(heatTTFolder)) {
   await fs.mkdir(heatTTFolder)
   await timetables.saveFiles(heatTTFolder)
   files = timetables.files
-} 
+}
 
 for (let file of files) {
   console.log('Reading', file)
   let runs = await file.extractRuns()
-  console.log(runs)
+  
+  console.log(util.inspect(runs, { maxArrayLength: Infinity, depth: Infinity, colors: true }))
 }
