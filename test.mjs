@@ -32,7 +32,7 @@ if (latestVersion.effective > currentVersion.effective) {
   
   nspFiles = []
   for (let file of nspFileNames) {
-    if (!(file.endsWith('.pdf') && file.startsWith(latestVersion.version)) || file.includes('Central')) continue
+    if (!(file.endsWith('.pdf') && file.startsWith(latestVersion.version)) || file.includes('Central') || file.includes('Freight')) continue
     let nspFile = new NSPFile(file.slice(0, -4), null, latestVersion.version)
     nspFile.setFilePath(path.join(nspFolder, file))
     nspFiles.push(nspFile)
