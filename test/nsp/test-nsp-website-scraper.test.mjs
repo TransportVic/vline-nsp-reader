@@ -16,10 +16,11 @@ const nspFP61FP62 = (await fs.readFile(path.join(__dirname, 'sample-data', 'nsp-
 const nspFP63 = (await fs.readFile(path.join(__dirname, 'sample-data', 'nsp-fp63.html'))).toString()
 const nspFP63EasternFreight = await fs.readFile(path.join(__dirname, 'sample-data', 'FP63 15-09-24 Eastern and S-East Freight NSP190824.pdf'))
 const nspFP66FP67 = (await fs.readFile(path.join(__dirname, 'sample-data', 'nsp-fp66-fp67.html'))).toString()
+const nspFP67FP68 = (await fs.readFile(path.join(__dirname, 'sample-data', 'nsp-fp67-fp68.html'))).toString()
 
 describe('The NSP website scraper', () => {
   describe('The getNSPVersion function', () => {
-    it('Should read the NSP website and determine the NSP version available', async () => {
+    it('Should read the NSP website and determine the NSP version available (FP63)', async () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP63)
       
       const version = await getNSPVersion()
@@ -28,7 +29,7 @@ describe('The NSP website scraper', () => {
       expect(version[0].effective).to.deep.equal(new Date('2024-09-15'))
     })
 
-    it('Should work with multiple NSP version being available', async () => {
+    it('Should work with multiple NSP version being available (FP61-62)', async () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP61FP62)
 
       const version = await getNSPVersion()
@@ -38,6 +39,18 @@ describe('The NSP website scraper', () => {
 
       expect(version[1].version).to.equal('FP61')
       expect(version[1].effective).to.deep.equal(new Date('2023-05-28'))
+    })
+
+    it('Should work with multiple NSP version being available (FP67-68)', async () => {
+      nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP67FP68)
+
+      const version = await getNSPVersion()
+      expect(version.length).to.equal(2)
+      expect(version[0].version).to.equal('FP68')
+      expect(version[0].effective).to.deep.equal(new Date('2026-08-23'))
+
+      expect(version[1].version).to.equal('FP67')
+      expect(version[1].effective).to.deep.equal(new Date('2026-02-01'))
     })
 
     it('Should return the timetables as a list of NSP files', async () => {
