@@ -53,7 +53,7 @@ describe('The NSP website scraper', () => {
       expect(version[1].effective).to.deep.equal(new Date('2026-02-01'))
     })
 
-    it('Should return the timetables as a list of NSP files', async () => {
+    it('Should return the timetables as a list of NSP files (FP63)', async () => {
       nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP63)
       
       const version = await getNSPVersion()
@@ -61,6 +61,21 @@ describe('The NSP website scraper', () => {
       expect(version[0].files[0].href).to.contain('/CMSPages/GetSharePointFile.ashx?connectionname=Network-Service-Plan')
 
       expect(version[0].files[1].name).to.equal('Eastern and S-East Freight')
+    })
+
+    it('Should return the timetables as a list of NSP files (FP67-68)', async () => {
+      nock(constants.VLINE_CORPORATE_HOST).get(constants.NSP_PAGE).reply(200, nspFP67FP68)
+      
+      const version = await getNSPVersion()
+      expect(version[0].files[0].name).to.equal('Central Freight')
+      expect(version[0].files[0].href).to.contain('https://vlineau.sharepoint.com/:b:/s/Extranet/')
+
+      expect(version[0].files[1].name).to.equal('Eastern & S-East Freight')
+
+      expect(version[1].files[0].name).to.equal('North Eastern-GV Freight')
+      expect(version[0].files[0].href).to.contain('https://vlineau.sharepoint.com/:b:/s/Extranet/')
+
+      expect(version[1].files[1].name).to.equal('Central Freight')
     })
 
     it('Rejects an NSP version with very few files (5)', async () => {
@@ -75,13 +90,30 @@ describe('The NSP website scraper', () => {
 })
 
 describe('The NSPVersion class', () => {
-  it('Should download its files to a given output directory', async () => {
+  it('Should download its files to a given output directory, defaulting to the V/Line Corporate page as a base URL', async () => {
     const tmp = await tmpdir({ unsafeCleanup: true })
 
     nock(constants.VLINE_CORPORATE_HOST).get('/file.pdf').reply(200, nspFP63EasternFreight)
 
     const nspVersion = new NSPVersion('FP99', new Date('2024-01-02'))
     nspVersion.addFile(new NSPFile('Eastern and S-East Freight', '/file.pdf', nspVersion))
+
+    await nspVersion.saveFiles(tmp.path)
+
+    const stat = await fs.stat(path.join(tmp.path, 'FP99 Eastern and S-East Freight.pdf'))
+    expect(stat.size).to.equal(27750)
+
+    await tmp.cleanup()
+  })
+
+  it('Should download its files to a given output directory, using the given host if present', async () => {
+    const tmp = await tmpdir({ unsafeCleanup: true })
+
+    nock(constants.VLINE_CORPORATE_HOST).get('/file.pdf').reply(200, 'wrong file!')
+    nock(constants.VLINE_SHAREPOINT).get('/file.pdf').reply(200, nspFP63EasternFreight)
+
+    const nspVersion = new NSPVersion('FP99', new Date('2024-01-02'))
+    nspVersion.addFile(new NSPFile('Eastern and S-East Freight', 'https://vlineau.sharepoint.com/file.pdf', nspVersion))
 
     await nspVersion.saveFiles(tmp.path)
 
