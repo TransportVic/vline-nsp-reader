@@ -27,7 +27,7 @@ if (latestVersion.effective > currentVersion.effective) {
 
   nspFiles = latestVersion.files
 } else {
- console.log('NSP up to date')
+  console.log('NSP up to date')
   let nspFileNames = await fs.readdir(nspFolder)
   
   nspFiles = []
